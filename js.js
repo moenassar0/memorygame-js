@@ -25,6 +25,9 @@ const cardArray = [
     }
 ]
 
+let cardsShuffled = 0;
+let cardsShuffledArray = [];
+
 let menu = document.getElementById('grid-container');
 let children = menu.children;
 console.log(children.length);
@@ -38,7 +41,9 @@ for(let i = 0; i < children.length; i++){
 }
 
 function flipCard(image, i){
-    console.log(cardArray[i].name);
+    cardsShuffled += 1;
+    cardsShuffledArray.push(image);
+    console.log(cardsShuffledArray);
 }
 
 
