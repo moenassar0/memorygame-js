@@ -1,0 +1,13 @@
+.grid-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.grid-item{
+    background-color: lightgrey;
+    width: 30%;
+    height: 200px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+}
