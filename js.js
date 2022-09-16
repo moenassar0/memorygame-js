@@ -41,12 +41,19 @@ for(let i = 0; i < children.length; i++){
 }
 
 function flipCard(image, i){
+
+    //Increment and save the images flipped
     cardsShuffled += 1;
     cardsShuffledArray.push(i);
+    
+    //Remove hidden property on image
+    image.classList.toggle("hidden");
 
     if(cardsShuffled >= 2){
-
-
+        //check if match
+        if(cardArray[cardsShuffledArray[0]].name == cardArray[cardsShuffledArray[1]].name){
+            console.log("matchfound");
+        }
 
         //Reinitializ Game
         cardsShuffled = 0;
