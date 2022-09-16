@@ -36,7 +36,7 @@ console.log(children.length);
 for(let i = 0; i < cardArray.length; i++){
     let image = document.createElement('img');
     image.src = cardArray[i].img;
-    image.classList.add("grid-item", "hidden");
+    image.classList.add("width", "hidden");
     children[i].setAttribute("id", i);
     children[i].addEventListener("click", flipCard)
     children[i].appendChild(image);
