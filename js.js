@@ -35,7 +35,7 @@ console.log(children.length);
 for(let i = 0; i < children.length; i++){
     let image = document.createElement('img');
     image.src = cardArray[i].img;
-    image.classList.add("width");
+    image.classList.add("width", "hidden");
     children[i].addEventListener("click", function(){flipCard(image, i)})
     children[i].appendChild(image);
 }
@@ -58,8 +58,14 @@ function flipCard(image, i){
         //Reinitializ Game
         cardsShuffled = 0;
         cardsShuffledArray = [];
+        setTimeout(hideItems, 500);
     }
-    console.log(cardsShuffledArray);
+}
+
+function hideItems(){
+    for(let i = 0; i < children.length; i++){
+        children[i].firstChild.classList.add("hidden");
+    }
 }
 
 
