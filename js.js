@@ -42,7 +42,16 @@ for(let i = 0; i < children.length; i++){
 
 function flipCard(image, i){
     cardsShuffled += 1;
-    cardsShuffledArray.push(image);
+    cardsShuffledArray.push(i);
+
+    if(cardsShuffled >= 2){
+
+
+
+        //Reinitializ Game
+        cardsShuffled = 0;
+        cardsShuffledArray = [];
+    }
     console.log(cardsShuffledArray);
 }
 
