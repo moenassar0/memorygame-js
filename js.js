@@ -73,9 +73,11 @@ function checkMatch(){
         children[sImgIndex].removeEventListener("click", flipCard);
         children[fImgIndex].removeEventListener("click", flipCard);
         scoreint += 1;
-        score.innerHTML = "Score: " + scoreint;
+        adjustScore()
     }
     else{
+        scoreint -= 1;
+        adjustScore();
         cardsShutffledImage[0].classList.add("hidden");
         cardsShutffledImage[1].classList.add("hidden");
     }
@@ -83,6 +85,13 @@ function checkMatch(){
     cardsShuffled = 0;
     cardsShuffledArray = [];
     cardsShutffledImage = [];
+}
+
+function adjustScore(){
+    if(scoreint <= 0){
+        scoreint = 0;
+    }
+    score.innerHTML = "Score: " + scoreint;
 }
 
 
