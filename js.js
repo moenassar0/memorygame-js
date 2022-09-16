@@ -33,7 +33,12 @@ for(let i = 0; i < children.length; i++){
     let image = document.createElement('img');
     image.src = cardArray[i].img;
     image.classList.add("width");
-    children[i].append(image);
+    children[i].addEventListener("click", function(){flipCard(image, i)})
+    children[i].appendChild(image);
+}
+
+function flipCard(image, i){
+    console.log(cardArray[i].name);
 }
 
 
