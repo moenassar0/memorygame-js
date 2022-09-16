@@ -28,7 +28,6 @@ const cardArray = [
 let cardsShuffled = 0;
 let cardsShuffledArray = [];
 let cardsShutffledImage = [];
-let wonCards = [];
 
 let menu = document.getElementById('grid-container');
 let children = menu.children;
@@ -37,7 +36,7 @@ console.log(children.length);
 for(let i = 0; i < cardArray.length; i++){
     let image = document.createElement('img');
     image.src = cardArray[i].img;
-    image.classList.add("width", "hidden");
+    image.classList.add("grid-item", "hidden");
     children[i].setAttribute("id", i);
     children[i].addEventListener("click", flipCard)
     children[i].appendChild(image);
@@ -46,7 +45,7 @@ for(let i = 0; i < cardArray.length; i++){
 function flipCard(){
     let i = this.getAttribute("id");
     let image = this.firstChild;
-    console.log()
+
     //Increment and save the images flipped
     cardsShuffled += 1;
     cardsShuffledArray.push(i);
@@ -58,18 +57,14 @@ function flipCard(){
     if(cardsShuffled >= 2){
         setTimeout(checkMatch, 500);
         //check if match
-
-
     }
 }
 
 function checkMatch(){
     let fImgIndex = cardsShuffledArray[0];
     let sImgIndex = cardsShuffledArray[1];
-    wonCards.push(fImgIndex);
-    wonCards.push(sImgIndex);
-    console.log(fImgIndex, sImgIndex);
-    if(cardArray[fImgIndex].name == cardArray[sImgIndex].name){
+
+    if(cardArray[fImgIndex].name == cardArray[sImgIndex].name && fImgIndex != sImgIndex){
         cardsShutffledImage[0].setAttribute("src", "./images/check.png");
         cardsShutffledImage[1].setAttribute("src", "./images/check.png");
         children[sImgIndex].removeEventListener("click", flipCard);
