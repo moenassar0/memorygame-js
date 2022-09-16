@@ -25,3 +25,9 @@ const cardArray = [
     }
 ]
 
+let menu = document.getElementById('grid-container');
+let children = menu.children;
+console.log(children.length);
+
+
+
