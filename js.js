@@ -33,6 +33,7 @@ let cardsShuffled = 0;
 let cardsShuffledArray = [];
 let cardsShutffledImage = [];
 let scoreint = 0;
+let cantClick = false;
 
 const menu = document.getElementById('grid-container');
 const children = menu.children;
@@ -47,20 +48,24 @@ for(let i = 0; i < cardArray.length; i++){
 }
 
 function flipCard(){
-    let i = this.getAttribute("id");
-    let image = this.firstChild;
-
-    //Increment and save the images flipped
-    cardsShuffled += 1;
-    cardsShuffledArray.push(i);
-    cardsShutffledImage.push(image);
+    if(!cantClick){
+        let i = this.getAttribute("id");
+        let image = this.firstChild;
     
-    //Remove hidden property on image
-    image.classList.toggle("hidden");
-
-    if(cardsShuffled >= 2){
-        setTimeout(checkMatch, 500);
+        //Increment and save the images flipped
+        cardsShuffled += 1;
+        cardsShuffledArray.push(i);
+        cardsShutffledImage.push(image);
+        
+        //Remove hidden property on image
+        image.classList.toggle("hidden");
+    
+        if(cardsShuffled >= 2){
+            cantClick = true;
+            setTimeout(checkMatch, 500);
+        }
     }
+
 }
 
 function checkMatch(){
@@ -85,6 +90,7 @@ function checkMatch(){
     cardsShuffled = 0;
     cardsShuffledArray = [];
     cardsShutffledImage = [];
+    cantClick = false;
 }
 
 function adjustScore(){
