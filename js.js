@@ -25,13 +25,17 @@ const cardArray = [
     }
 ]
 
+//Randomize array, not the best function but its one line :D
+cardArray.sort(() => 0.5 - Math.random());
+
+const score = document.getElementById("score");
 let cardsShuffled = 0;
 let cardsShuffledArray = [];
 let cardsShutffledImage = [];
+let scoreint = 0;
 
-let menu = document.getElementById('grid-container');
-let children = menu.children;
-console.log(children.length);
+const menu = document.getElementById('grid-container');
+const children = menu.children;
 
 for(let i = 0; i < cardArray.length; i++){
     let image = document.createElement('img');
@@ -56,7 +60,6 @@ function flipCard(){
 
     if(cardsShuffled >= 2){
         setTimeout(checkMatch, 500);
-        //check if match
     }
 }
 
@@ -69,12 +72,14 @@ function checkMatch(){
         cardsShutffledImage[1].setAttribute("src", "./images/check.png");
         children[sImgIndex].removeEventListener("click", flipCard);
         children[fImgIndex].removeEventListener("click", flipCard);
+        scoreint += 1;
+        score.innerHTML = "Score: " + scoreint;
     }
     else{
         cardsShutffledImage[0].classList.add("hidden");
         cardsShutffledImage[1].classList.add("hidden");
     }
-    //Reinitializ Game
+    //Reinitialize game
     cardsShuffled = 0;
     cardsShuffledArray = [];
     cardsShutffledImage = [];
